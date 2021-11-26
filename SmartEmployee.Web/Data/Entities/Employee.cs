@@ -61,7 +61,6 @@ namespace SmartEmployee.Web.Data.Entities
         [DataType(DataType.EmailAddress)]
         public string employeeEmail { get; set; }
 
-        public User user { get; set; }
 
         [Display(Name ="Employee")]
         public string FullName => $"{employeeFirstName} {employeeSurname} {employeeSecondSurname}";

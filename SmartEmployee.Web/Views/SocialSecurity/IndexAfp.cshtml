@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Afp>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Afp</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateAfp">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.afpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.afpNit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.afpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.afpNit)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditAfp" asp-route-id="@item.afpId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteAfp" asp-route-id="@item.afpId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -20,7 +20,6 @@ namespace SmartEmployee.Web.Data.Entities
         
         public PayrollType PayrollType { get; set; }
 
-        public ICollection<User> users { get; set; } 
         public ICollection<Office> offices { get; set; }
         public ICollection<LaboralInfo> laboralInfos { get; set; }
     }

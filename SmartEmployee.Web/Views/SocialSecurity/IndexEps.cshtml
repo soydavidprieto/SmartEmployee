@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Eps>
+
+@{
+    ViewData["Title"] = "Eps";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Eps</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateEps">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.epsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.epsNit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.epsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.epsNit)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditEps" asp-route-id="@item.epsId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteEps" asp-route-id="@item.epsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

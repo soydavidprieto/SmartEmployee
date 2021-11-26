@@ -24,6 +24,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Social Security
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexAfp">AFP</a>
+                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexArl">ARL</a>
+                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexEps">EPS</a> 
+                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexCcf">CCF</a>      
+                            </div>
+                          </li>
+                         
                     </ul>
                 </div>
             </div>
@@ -46,3 +58,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+

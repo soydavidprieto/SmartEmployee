@@ -28,7 +28,6 @@ namespace SmartEmployee.Web.Data.Entities
         [Display(Name = "Image")]
         public string userImageUrl { get; set; }
 
-        public Company Company { get; set; }
 
         public string ImageFullPath => string.IsNullOrEmpty(userImageUrl)
             ? null
@@ -36,6 +35,6 @@ namespace SmartEmployee.Web.Data.Entities
 
         public string FullName => $"{userFirstName} {userLastName}";
 
-        public ICollection<Employee> employees { get; set; }
+        
     }
 }

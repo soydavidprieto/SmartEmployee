@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Ccf>
+
+@{
+    ViewData["Title"] = "Index Ccf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CCF</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateCcf">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ccfName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ccfNit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ccfName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ccfNit)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditCcf" asp-route-id="@item.ccfId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteCcf" asp-route-id="@item.ccfId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

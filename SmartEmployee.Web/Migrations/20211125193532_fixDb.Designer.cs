@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartEmployee.Web.Data;
 
 namespace SmartEmployee.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211125193532_fixDb")]
+    partial class fixDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -398,11 +400,16 @@ namespace SmartEmployee.Web.Migrations
                     b.Property<int>("genderId")
                         .HasColumnType("int");
 
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("EmmployeeId");
 
                     b.HasIndex("documentTypeId");
 
                     b.HasIndex("genderId");
+
+                    b.HasIndex("userId");
 
                     b.ToTable("Employees");
                 });
@@ -810,9 +817,15 @@ namespace SmartEmployee.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SmartEmployee.Web.Data.Entities.User", "user")
+                        .WithMany("employees")
+                        .HasForeignKey("userId");
+
                     b.Navigation("DocumentType");
 
                     b.Navigation("Gender");
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("SmartEmployee.Web.Data.Entities.LaboralInfo", b =>
@@ -969,6 +982,11 @@ namespace SmartEmployee.Web.Migrations
             modelBuilder.Entity("SmartEmployee.Web.Data.Entities.Schedule", b =>
                 {
                     b.Navigation("laboralInfos");
+                });
+
+            modelBuilder.Entity("SmartEmployee.Web.Data.Entities.User", b =>
+                {
+                    b.Navigation("employees");
                 });
 #pragma warning restore 612, 618
         }
