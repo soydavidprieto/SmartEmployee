@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SmartEmployee.Web</title>
+    <title>@ViewData["Title"] - SmartEmployee</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -33,6 +33,20 @@
                               <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexArl">ARL</a>
                               <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexEps">EPS</a> 
                               <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexCcf">CCF</a>      
+                            </div>
+                          </li>
+
+                          <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Administration
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexCompany">Companies</a>
+                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexPositions">Positions</a>      
+                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexPayrollType">Pyroll Type</a>      
+                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexSchedule">Schedule</a>      
+                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexOffice">Office</a>      
+                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexRelationship">Relationship</a>
                             </div>
                           </li>
                          

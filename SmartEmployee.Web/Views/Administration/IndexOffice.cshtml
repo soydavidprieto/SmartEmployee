@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Office>
+
+@{
+    ViewData["Title"] = "Index Office";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Office</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateOffice">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.officeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.officeAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.officePhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.officeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.officeAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.officePhoneNumber)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditOffice" asp-route-id="@item.officeId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteOffice" asp-route-id="@item.officeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

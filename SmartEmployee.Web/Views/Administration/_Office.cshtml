@@ -1,0 +1,23 @@
+﻿@model SmartEmployee.Web.Models.OfficeViewModel
+
+            <div class="form-group">
+            	<label asp-for="companyId" class="control-label"></label>
+            	<select asp-for="companyId" asp-items="Model.company" class="form-control"></select>
+            	<span asp-validation-for="company" class="text-danger"></span>
+        	</div>
+            <div class="form-group">
+                <label asp-for="officeName" class="control-label"></label>
+                <input asp-for="officeName" class="form-control" />
+                <span asp-validation-for="officeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="officeAddress" class="control-label"></label>
+                <input asp-for="officeAddress" class="form-control" />
+                <span asp-validation-for="officeAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="officePhoneNumber" class="control-label"></label>
+                <input asp-for="officePhoneNumber" class="form-control" />
+                <span asp-validation-for="officePhoneNumber" class="text-danger"></span>
+            </div>
+

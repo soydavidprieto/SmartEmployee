@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Schedule>
+
+@{
+    ViewData["Title"] = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Schedule</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateSchedule">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.scheduleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.workingHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.scheduleBreak)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.scheduleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.workingHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.scheduleBreak)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditSchedule" asp-route-id="@item.scheduleId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteSchedule" asp-route-id="@item.scheduleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

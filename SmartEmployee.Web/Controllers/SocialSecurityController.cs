@@ -57,6 +57,12 @@ namespace SmartEmployee.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isExist = IsAfpExist(afp.afpNit);
+                if (isExist)
+                {
+                    ModelState.AddModelError(string.Empty, "The registry is already registered in the system");
+                    return View(afp);
+                }
                 _context.Add(afp);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexAfp));
@@ -93,22 +99,8 @@ namespace SmartEmployee.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(afp);
+                _context.Update(afp);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AfpExists(afp.afpId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(IndexAfp));
             }
             return View(afp);
@@ -145,10 +137,13 @@ namespace SmartEmployee.Web.Controllers
         }
         #endregion
 
-        private bool AfpExists(int id)
+        [NonAction]
+        public bool IsAfpExist(string afpNit)
         {
-            return _context.Afps.Any(e => e.afpId == id);
+            var v = _context.Afps.Where(a => a.afpNit == afpNit).FirstOrDefault();
+            return v != null;
         }
+        
 
         #endregion
 
@@ -172,6 +167,12 @@ namespace SmartEmployee.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isExist = IsArlExist(arl.arlNit);
+                if (isExist)
+                {
+                    ModelState.AddModelError(string.Empty, "The registry is already registered in the system");
+                    return View(arl);
+                }
                 _context.Add(arl);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexArl));
@@ -208,23 +209,9 @@ namespace SmartEmployee.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
                     _context.Update(arl);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ArlExists(arl.arlId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(IndexArl));
+                    await _context.SaveChangesAsync();   
+                    return RedirectToAction(nameof(IndexArl));
             }
             return View(arl);
         }
@@ -260,9 +247,11 @@ namespace SmartEmployee.Web.Controllers
         }
         #endregion
 
-        private bool ArlExists(int id)
+        [NonAction]
+        public bool IsArlExist(string arlNit)
         {
-            return _context.Arls.Any(e => e.arlId == id);
+            var v = _context.Arls.Where(a => a.arlNit == arlNit).FirstOrDefault();
+            return v != null;
         }
 
         #endregion
@@ -287,6 +276,12 @@ namespace SmartEmployee.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isExist = IsEpsExist(eps.epsNit);
+                if (isExist)
+                {
+                    ModelState.AddModelError(string.Empty, "The registry is already registered in the system");
+                    return View(eps);
+                }
                 _context.Add(eps);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexEps));
@@ -323,22 +318,10 @@ namespace SmartEmployee.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
                     _context.Update(eps);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EpsExists(eps.epsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                
+                
                 return RedirectToAction(nameof(IndexEps));
             }
             return View(eps);
@@ -375,9 +358,11 @@ namespace SmartEmployee.Web.Controllers
         }
         #endregion
 
-        private bool EpsExists(int id)
+        [NonAction]
+        public bool IsEpsExist(string epsNit)
         {
-            return _context.Epses.Any(e => e.epsId == id);
+            var v = _context.Epses.Where(a => a.epsNit == epsNit).FirstOrDefault();
+            return v != null;
         }
 
         #endregion
@@ -402,6 +387,12 @@ namespace SmartEmployee.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isExist = IsCcfExist(ccf.ccfNit);
+                if (isExist)
+                {
+                    ModelState.AddModelError(string.Empty, "The registry is already registered in the system");
+                    return View(ccf);
+                }
                 _context.Add(ccf);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexCcf));
@@ -438,22 +429,10 @@ namespace SmartEmployee.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
                     _context.Update(ccf);
                     await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CcfExists(ccf.ccfId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                
+               
                 return RedirectToAction(nameof(IndexCcf));
             }
             return View(ccf);
@@ -490,9 +469,11 @@ namespace SmartEmployee.Web.Controllers
         }
         #endregion
 
-        private bool CcfExists(int id)
+        [NonAction]
+        public bool IsCcfExist(string ccfNit)
         {
-            return _context.Ccfs.Any(e => e.ccfId == id);
+            var v = _context.Ccfs.Where(a => a.ccfNit == ccfNit).FirstOrDefault();
+            return v != null;
         }
 
         #endregion

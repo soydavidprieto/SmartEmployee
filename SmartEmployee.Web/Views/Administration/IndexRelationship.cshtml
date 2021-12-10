@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.LaborRelationship>
+
+@{
+    ViewData["Title"] = "Index Relationship";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Labora Relationship</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateRelationship">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.relationshipName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.relationshipName)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditRelationship" asp-route-id="@item.relationshipId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteRelationship" asp-route-id="@item.relationshipId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

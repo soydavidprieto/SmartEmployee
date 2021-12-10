@@ -1,0 +1,16 @@
+﻿@model SmartEmployee.Web.Data.Entities.Schedule            
+            <div class="form-group">
+                <label asp-for="scheduleName" class="control-label"></label>
+                <input asp-for="scheduleName" class="form-control" />
+                <span asp-validation-for="scheduleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="workingHours" class="control-label"></label>
+                <input asp-for="workingHours" class="form-control" />
+                <span asp-validation-for="workingHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scheduleBreak" class="control-label"></label>
+                <input asp-for="scheduleBreak" class="form-control" />
+                <span asp-validation-for="scheduleBreak" class="text-danger"></span>
+            </div>

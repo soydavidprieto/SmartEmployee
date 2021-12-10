@@ -1,0 +1,46 @@
+﻿@model SmartEmployee.Web.Models.CompanyViewModel
+
+@{
+	ViewData["Title"] = "Create Company";
+}
+
+<h2>Create</h2>
+
+<h4>Company</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+    	<form asp-action="CreateCompany" enctype="multipart/form-data">
+        	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        	
+        	<div class="form-group">
+            	<label asp-for="companyName" class="control-label"></label>
+            	<input asp-for="companyName" class="form-control" />
+            	<span asp-validation-for="companyName" class="text-danger"></span>
+        	</div>
+
+        	<div class="form-group">
+            	<label asp-for="companyNit" class="control-label"></label>
+            	<input asp-for="companyNit" class="form-control" />
+            	<span asp-validation-for="companyNit" class="text-danger"></span>
+        	</div>
+
+        	<div class="form-group">
+            	<label asp-for="payrollTypeId" class="control-label"></label>
+            	<select asp-for="payrollTypeId" asp-items="Model.payrollType" class="form-control"></select>
+            	<span asp-validation-for="payrollType" class="text-danger"></span>
+        	</div>
+
+        	
+
+        	
+
+        	
+
+        	<div class="form-group">
+            	<input type="submit" value="Create" class="btn btn-primary" />
+            	<a asp-action="IndexCompany"  class="btn btn-secondary">Back to list</a>
+        	</div>
+    	</form>
+	</div>
+</div>

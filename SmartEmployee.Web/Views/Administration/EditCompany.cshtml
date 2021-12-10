@@ -1,0 +1,44 @@
+﻿@model SmartEmployee.Web.Models.CompanyViewModel;
+
+@{
+    ViewData["Title"] = "Edit Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Company</h1>
+
+<h4>Company</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCompany">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="companyId" />
+            <div class="form-group">
+                <label asp-for="companyName" class="control-label"></label>
+                <input asp-for="companyName" class="form-control" />
+                <span asp-validation-for="companyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="companyNit" class="control-label"></label>
+                <input asp-for="companyNit" class="form-control" />
+                <span asp-validation-for="companyNit" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+            	<label asp-for="payrollTypeId" class="control-label"></label>
+            	<select asp-for="payrollTypeId" asp-items="Model.payrollType" class="form-control"></select>
+            	<span asp-validation-for="payrollType" class="text-danger"></span>
+        	</div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                 <a class="btn btn-secondary" asp-action="IndexCompany">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+

@@ -1,0 +1,29 @@
+﻿@model SmartEmployee.Web.Data.Entities.Office
+
+@{
+    ViewData["Title"] = "Create Office";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Office</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOffice">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <partial name="_Office"/>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="IndexOffice">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+

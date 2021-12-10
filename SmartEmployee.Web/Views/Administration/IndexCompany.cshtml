@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Company>
+
+@{
+    ViewData["Title"] = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Company</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateCompany">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.companyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.companyNit)
+            </th>
+            <th>
+                Payroll Type
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyNit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayrollType.payrollTypeDescription)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditCompany" asp-route-id="@item.companyId">Edit</a> |
+                <a class="btn btn-danger" asp-action="DeleteCompany" asp-route-id="@item.companyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

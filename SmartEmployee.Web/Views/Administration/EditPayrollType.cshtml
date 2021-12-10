@@ -1,0 +1,28 @@
+﻿@model SmartEmployee.Web.Data.Entities.PayrollType
+
+@{
+    ViewData["Title"] = "Edit Payroll Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Payroll Type</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditPayrollType">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="payrollTypeId" />
+            <div class="form-group">
+                <label asp-for="payrollTypeDescription" class="control-label"></label>
+                <input asp-for="payrollTypeDescription" class="form-control" />
+                <span asp-validation-for="payrollTypeDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="IndexPayrollType">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SmartEmployee.Web.Data.Entities.Position>
+
+@{
+    ViewData["Title"] = "Index Positions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Position</h1>
+<p>
+    <a class="btn btn-primary" asp-action="CreatePosition">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.positionDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.positionDescription)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="EditPosition" asp-route-id="@item.positionId">Edit</a> | <a class="btn btn-danger" asp-action="DeletePosition" asp-route-id="@item.positionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
