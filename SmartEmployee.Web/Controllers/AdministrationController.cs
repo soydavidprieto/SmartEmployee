@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using SmartEmployee.Web.Data.Entities;
 using SmartEmployee.Web.Helpers;
 using SmartEmployee.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SmartEmployee.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private readonly DataContext _context;

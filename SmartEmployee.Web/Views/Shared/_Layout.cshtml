@@ -11,7 +11,9 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SmartEmployee.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> 
+                    <img src="https://cdn-icons.flaticon.com/png/512/1713/premium/1713823.png?token=exp=1639174029~hmac=d33c8f49e07d1a19001ea96e49fa6ea6"
+                         alt="" width="30" height="30" class="d-inline-block align-text-top">Smart Employee</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,38 +21,57 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Social Security
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexAfp">AFP</a>
-                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexArl">ARL</a>
-                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexEps">EPS</a> 
-                              <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexCcf">CCF</a>      
-                            </div>
-                          </li>
+                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Social Security
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexAfp">AFP</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexArl">ARL</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexEps">EPS</a> 
+                                    <a class="dropdown-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexCcf">CCF</a>      
+                                </div>
+                            </li>
 
-                          <li class="nav-item dropdown active">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Administration
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexCompany">Companies</a>
-                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexPositions">Positions</a>      
-                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexPayrollType">Pyroll Type</a>      
-                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexSchedule">Schedule</a>      
-                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexOffice">Office</a>      
-                              <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexRelationship">Relationship</a>
-                            </div>
-                          </li>
-                         
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administration
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexCompany">Companies</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexPositions">Positions</a>      
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexPayrollType">Pyroll Type</a>      
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexSchedule">Schedule</a>      
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexOffice">Office</a>      
+                                    <a class="dropdown-item" asp-area="" asp-controller="Administration" asp-action="IndexRelationship">Relationship</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Security" asp-action="IndexSecurity">Security</a>
+                            </li>
+                        }
                     </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+    	                @if (User.Identity.IsAuthenticated)
+    	                {
+        	                <li class="nav-item"><a class="nav-link active" asp-area="" asp-controller="Securityt" asp-action="ChangeUser">@User.Identity.Name</a></li>
+        	                <li class="nav-item"><a asp-area="" asp-controller="Security" asp-action="Logout">Logout</a></li>
+    	                }
+    	                else
+    	                {
+        	                <li class="nav-item"><a class="nav-link active" asp-area="" asp-controller="Security" asp-action="Login">Login</a></li>
+    	                }
+	                </ul>
                 </div>
             </div>
         </nav>
@@ -63,7 +84,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - SmartEmployee.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - SmartEmployee - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
