@@ -25,8 +25,8 @@ namespace SmartEmployee.Web.Data
             await CheckRoles();
             await checkPayRollTypeAsync();
             await CheckCompaniesAsync();
-            var Admin = await CheckUserAsync("David", "Prieto", "soydavidprieto@gmail.com", "Admin");
-            var Emmployee = await CheckUserAsync("Juan", "Rodriguez", "prietodavid33@hotmail.com", "Employee");
+            var Admin = await CheckUserAsync("David", "Prieto", "Chavarro", "soydavidprieto@gmail.com", "Admin");
+            var Emmployee = await CheckUserAsync("Juan", "Rodriguez", "Gonzales", "prietodavid33@hotmail.com", "Employee");
             await checkApfpAsync();
             await checkArlAsync();
             await checkEpsAsync();
@@ -47,15 +47,16 @@ namespace SmartEmployee.Web.Data
             await _userHelper.CheckRoleAsync("Human Resources");
         }
 
-        private async Task<User> CheckUserAsync(string firstName, string lastName, string email, string role)
+        private async Task<User> CheckUserAsync(string firstName, string surname,string SecondSurname, string email, string role)
         {
             var user = await _userHelper.GetUserByEmailAsync(email);
             if (user == null)
             {
                 user = new User
                 {
-                    userFirstName = firstName,
-                    userLastName = lastName,
+                    firstName = firstName,
+                    surname = surname,
+                    secondSurname = SecondSurname,
                     Email = email,
                     UserName = email
                 };

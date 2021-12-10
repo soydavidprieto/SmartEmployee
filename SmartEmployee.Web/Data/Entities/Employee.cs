@@ -7,20 +7,8 @@ namespace SmartEmployee.Web.Data.Entities
     {
         [Key]
         public int EmmployeeId { get; set; }
-        [Required]
-        [Display(Name = "First Name")]
-        [MaxLength(150, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string employeeFirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Surname")]
-        [MaxLength(80, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string employeeSurname { get; set; }
-
-        [Required]
-        [Display(Name = "Second surname")]
-        [MaxLength(80, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        public string employeeSecondSurname { get; set; }
+        public User User { get; set; }
 
         [Required]
         [Display(Name = "Document Type")]
@@ -54,16 +42,6 @@ namespace SmartEmployee.Web.Data.Entities
         [Required]
         [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         public string employeeAddress { get; set; }
-
-        [Required]
-        [Display(Name = "Email address")]
-        [MaxLength(150)]
-        [DataType(DataType.EmailAddress)]
-        public string employeeEmail { get; set; }
-
-
-        [Display(Name ="Employee")]
-        public string FullName => $"{employeeFirstName} {employeeSurname} {employeeSecondSurname}";
 
         public ICollection<Contract> Contracts { get; set; }
         public ICollection<LaboralInfo> LaboralInfos { get;}
