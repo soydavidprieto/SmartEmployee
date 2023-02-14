@@ -4,36 +4,36 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 text-gray-800">AFP</h1>
+    <div class="col-xl-4 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                     <h6>Create New AFP</h6>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                <hr />
+                                                <form asp-action="CreateAfp">
+                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                    
+                                                    <partial name="_Afp"/>
+                                                    
+                                                    <div class="form-group">
+                                                        <input type="submit" value="Create" class="btn btn-sm btn-primary" />
+                                                        <a class="btn btn-sm btn-secondary" asp-action="IndexAfp">Back to List</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
 
-<h1>Create</h1>
-
-<h4>Afp</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateAfp">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="afpName" class="control-label"></label>
-                <input asp-for="afpName" class="form-control" />
-                <span asp-validation-for="afpName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="afpNit" class="control-label"></label>
-                <input asp-for="afpNit" class="form-control" />
-                <span asp-validation-for="afpNit" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a class="btn btn-secondary" asp-action="IndexAfp">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+            

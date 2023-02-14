@@ -1,0 +1,54 @@
+﻿@model SmartEmployee.Web.Data.Entities.Position
+
+@{
+    ViewData["Title"] = "Detailsposition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    
+    <div class="col-xl-7 col-md-6 mb-5">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <h6>Position</h6>
+                <div class="row no-gutters align-items-center">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <hr />
+                        <div>
+                            <div>
+                <h6>
+                    @Html.DisplayNameFor(model => model.positionName)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.positionName)
+                </p>
+                <h6>
+                    @Html.DisplayNameFor(model => model.positionDescription)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.positionDescription)
+                </p>
+                <h6>
+                    @Html.DisplayNameFor(model => model.generalFunctions)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.generalFunctions)
+                <p/>
+                <h6>
+                    @Html.DisplayNameFor(model => model.specificFunctions)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.specificFunctions)
+                </p>
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-sm btn-warning" asp-controller="Administration" asp-action="EditPosition" asp-route-id="@Model.positionId">Edit</a> |
+            <a class="btn btn-sm btn-secondary" asp-action="IndexPositions">Back to List</a>
+        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

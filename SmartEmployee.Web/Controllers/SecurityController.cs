@@ -48,7 +48,7 @@ namespace SmartEmployee.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await _userHelper.LogoutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Security");
         }
     }
 }

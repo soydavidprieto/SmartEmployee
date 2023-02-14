@@ -4,15 +4,21 @@
     ViewData["Title"] = "Index Positions";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Position</h1>
-<p>
-    <a class="btn btn-primary" asp-action="CreatePosition">Create New</a>
-</p>
-<table class="table">
+<div class="container-fluid">
+     <!-- Page Heading -->
+     <h1 class="h3 text-gray-800">Position</h1>
+     <div class="card shadow mb-4">
+         <div class="card-header py-3">
+             <a asp-action="CreatePosition" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                 <i class="fas fa-plus fa-sm text-white-50"></i> Create New</a>
+         </div>
+         <div class="card-body">
+             <div class="table-responsive">
+                 <table class="table table-bordered" id="dataTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.positionDescription)
+                @Html.DisplayNameFor(model => model.positionName)
             </th>
             <th></th>
         </tr>
@@ -21,12 +27,30 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.positionDescription)
+                @Html.DisplayFor(modelItem => item.positionName)
             </td>
             <td>
-                <a class="btn btn-warning" asp-action="EditPosition" asp-route-id="@item.positionId">Edit</a> | <a class="btn btn-danger" asp-action="DeletePosition" asp-route-id="@item.positionId">Delete</a>
+                <a asp-action="EditPosition" asp-route-id="@item.positionId" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+                    <span class="icon text-black-50">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </span><span class="text-black-50">Edit</span>
+                </a>
+                <a asp-action="DetailsPosition" asp-route-id="@item.positionId" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                    <span class="icon text-black-50">
+                                        <i class="fas fa-info"></i>
+                                    </span><span class="text-black-50">Details</span>
+                                </a>
+                <a asp-action="DeletePosition" asp-route-id="@item.positionId" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-trash"></i>
+                    </span><span class="text">Delete</span>
+                </a>
             </td>
         </tr>
 }
     </tbody>
-</table>
+                 </table>
+             </div>
+         </div>
+     </div>
+</div>

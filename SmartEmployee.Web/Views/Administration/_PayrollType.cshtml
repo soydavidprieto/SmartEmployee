@@ -1,18 +1,7 @@
-﻿@model TModel
+﻿@model SmartEmployee.Web.Data.Entities.PayrollType
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="form-group">
+    <label asp-for="payrollTypeDescription" class="control-label"></label>
+    <input asp-for="payrollTypeDescription" class="form-control" />
+    <span asp-validation-for="payrollTypeDescription" class="text-danger"></span>
 </div>
-</body>
-</html>

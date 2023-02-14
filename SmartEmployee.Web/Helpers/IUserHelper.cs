@@ -20,5 +20,7 @@ namespace SmartEmployee.Web.Helpers
         Task<SignInResult> LoginAsync(LoginViewModel model);
 
         Task LogoutAsync();
+
+        string CreateRandomPassword(int PasswordLength);
     }
 }

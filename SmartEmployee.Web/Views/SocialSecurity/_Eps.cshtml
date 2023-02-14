@@ -1,18 +1,12 @@
-﻿@model TModel
+﻿@model SmartEmployee.Web.Data.Entities.Eps
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="form-group">
+    <label asp-for="epsName" class="control-label"></label>
+    <input asp-for="epsName" class="form-control" />
+    <span asp-validation-for="epsName" class="text-danger"></span>
 </div>
-</body>
-</html>
+<div class="form-group">
+    <label asp-for="epsNit" class="control-label"></label>
+    <input asp-for="epsNit" class="form-control" />
+    <span asp-validation-for="epsNit" class="text-danger"></span>
+</div>

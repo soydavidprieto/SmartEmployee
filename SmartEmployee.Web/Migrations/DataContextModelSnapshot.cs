@@ -350,6 +350,9 @@ namespace SmartEmployee.Web.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("documentTypeId")
                         .HasColumnType("int");
 
@@ -371,34 +374,16 @@ namespace SmartEmployee.Web.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("employeeEmail")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("employeeFirstName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
                     b.Property<string>("employeeFixedPhone")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("employeeSecondSurname")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("employeeSurname")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
 
                     b.Property<int>("genderId")
                         .HasColumnType("int");
 
                     b.HasKey("EmmployeeId");
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("documentTypeId");
 
@@ -582,10 +567,22 @@ namespace SmartEmployee.Web.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("generalFunctions")
+                        .HasMaxLength(800)
+                        .HasColumnType("nvarchar(800)");
+
                     b.Property<string>("positionDescription")
+                        .HasMaxLength(800)
+                        .HasColumnType("nvarchar(800)");
+
+                    b.Property<string>("positionName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("specificFunctions")
+                        .HasMaxLength(800)
+                        .HasColumnType("nvarchar(800)");
 
                     b.HasKey("positionId");
 
@@ -671,21 +668,20 @@ namespace SmartEmployee.Web.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("temPasswordUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userFirstName")
+                    b.Property<string>("firstName")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("userImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userLastName")
+                    b.Property<string>("secondSurname")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("surname")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.HasKey("Id");
 
@@ -798,6 +794,10 @@ namespace SmartEmployee.Web.Migrations
 
             modelBuilder.Entity("SmartEmployee.Web.Data.Entities.Employee", b =>
                 {
+                    b.HasOne("SmartEmployee.Web.Data.Entities.User", "User")
+                        .WithMany("Employees")
+                        .HasForeignKey("UserId");
+
                     b.HasOne("SmartEmployee.Web.Data.Entities.DocumentType", "DocumentType")
                         .WithMany("Employees")
                         .HasForeignKey("documentTypeId")
@@ -813,6 +813,8 @@ namespace SmartEmployee.Web.Migrations
                     b.Navigation("DocumentType");
 
                     b.Navigation("Gender");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SmartEmployee.Web.Data.Entities.LaboralInfo", b =>
@@ -969,6 +971,11 @@ namespace SmartEmployee.Web.Migrations
             modelBuilder.Entity("SmartEmployee.Web.Data.Entities.Schedule", b =>
                 {
                     b.Navigation("laboralInfos");
+                });
+
+            modelBuilder.Entity("SmartEmployee.Web.Data.Entities.User", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

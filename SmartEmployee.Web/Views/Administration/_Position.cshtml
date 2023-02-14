@@ -1,18 +1,25 @@
-﻿@model TModel
+﻿@model SmartEmployee.Web.Data.Entities.Position
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="form-group">
+    <label asp-for="positionName" class="control-label"></label>
+    <input asp-for="positionName" class="form-control"/>
+    <span asp-validation-for="positionName" class="text-danger"></span>
 </div>
-</body>
-</html>
+
+<div class="form-group">
+    <label asp-for="positionDescription" class="control-label"></label>
+    <textarea asp-for="positionDescription" class="form-control"></textarea>
+    <span asp-validation-for="positionDescription" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="generalFunctions" class="control-label"></label>
+    <textarea  asp-for="generalFunctions" class="form-control"></textarea>
+    <span asp-validation-for="generalFunctions" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="specificFunctions" class="control-label"></label>
+    <textarea asp-for="specificFunctions" class="form-control"></textarea>
+    <span asp-validation-for="specificFunctions" class="text-danger"></span>
+</div>

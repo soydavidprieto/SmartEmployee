@@ -273,7 +273,7 @@ namespace SmartEmployee.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePosition([Bind("positionId, positionDescription")] Position position)
+        public async Task<IActionResult> CreatePosition(Position position)
         {
             if (ModelState.IsValid)
             {
@@ -305,7 +305,7 @@ namespace SmartEmployee.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPosition(int id, [Bind("positionId,positionDescription")] Position position)
+        public async Task<IActionResult> EditPosition(int id, Position position)
         {
             if (id != position.positionId)
             {
@@ -320,6 +320,28 @@ namespace SmartEmployee.Web.Controllers
             }
             return View(position);
         }
+        #endregion
+
+        #region Details Position
+
+        
+        public async Task<IActionResult> Detailsposition(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var positions = await _context.Positions
+                .FirstOrDefaultAsync(p => p.positionId == id);
+            if (positions == null)
+            {
+                return NotFound();
+            }
+
+            return View(positions);
+        }
+
         #endregion
 
         #region // Delete Position

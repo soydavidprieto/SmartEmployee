@@ -24,22 +24,17 @@ namespace SmartEmployee.Web.Data.Entities
         public string secondSurname { get; set; }
 
 
-        [DataType(DataType.Password)]
-        public string temPasswordUser { get; set; }
+        //[Display(Name = "Image")]
+        //public string userImageUrl { get; set; }
 
         public ICollection<Employee> Employees { get; set; }
 
-        [Display(Name = "Image")]
-        public string userImageUrl { get; set; }
 
+        //public string imageFullPath => string.IsNullOrEmpty(userImageUrl)
+        //    ? null
+        //    : $"https://TDB.azurewebsites.net{userImageUrl.Substring(1)}";
 
-
-
-        public string imageFullPath => string.IsNullOrEmpty(userImageUrl)
-            ? null
-            : $"https://TDB.azurewebsites.net{userImageUrl.Substring(1)}";
-
-        public string FullName => $"{firstName} {surname}";
+        public string FullName => $"{firstName} {surname} {secondSurname}";
 
         
     }

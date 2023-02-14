@@ -79,5 +79,43 @@ namespace SmartEmployee.Web.Helpers
             };
         }
         #endregion
+
+        #region // Employee
+        //public async Task<Employee> ToEmployeeAsync(EmployeeViewModel model, bool isNew)
+        //{
+        //    var employee = new Employee
+        //    {
+               
+        //        //employeeId = isNew ? 0 : model.employeeId,
+        //        Gender = await _context.Genders.FindAsync(model.genderId),
+        //        DocumentType = await _context.DocumentTypes.FindAsync(model.documentTypeId),
+        //        employeeDocument = model.employeeDocument,
+        //        employeeBirth = model.employeeBirth,
+        //        employeeFixedPhone = model.employeeFixedPhone,
+        //        employeeCellPhone = model.employeeCellPhone,
+        //        employeeAddress = model.employeeAddress
+        //    };
+
+        //    return employee;
+        //}
+
+        //public EmployeeViewModel ToEmployeeViewModel(Employee employee)
+        //{
+        //    return new EmployeeViewModel
+        //    {
+        //        genderId = employee.Gender.genderId,
+        //        Genders = _combosHelper.GetComboGenders(),
+        //        documentTypeId = employee.DocumentType.documentTypeId,
+        //        DocumentTypes = _combosHelper.GetComboDocumentType(),
+        //        employeeDocument = employee.employeeDocument,
+        //        employeeBirth = employee.employeeBirth,
+        //        employeeFixedPhone= employee.employeeFixedPhone,
+        //        employeeCellPhone= employee.employeeCellPhone,
+        //        employeeAddress= employee.employeeAddress
+                
+        //    };
+        //}
+
+        #endregion
     }
 }

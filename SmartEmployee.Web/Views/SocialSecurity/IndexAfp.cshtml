@@ -4,38 +4,57 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 text-gray-800">AFP</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a asp-action="CreateAfp" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-plus fa-sm text-white-50"></i> Create New</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.afpName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.afpNit)
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.afpName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.afpNit)
+                            </td>
+                            <td>
+                                <a asp-action="EditAfp" asp-route-id="@item.afpId" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+                                    <span class="icon text-black-50">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span><span class="text-black-50">Edit</span>
+                                </a>
+                                <a asp-action="DeleteAfp" asp-route-id="@item.afpId" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span><span class="text">Delete</span>
+                                </a>
 
-<h1>Afp</h1>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
 
-<p>
-    <a class="btn btn-primary" asp-action="CreateAfp">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.afpName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.afpNit)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.afpName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.afpNit)
-            </td>
-            <td>
-                <a class="btn btn-warning" asp-action="EditAfp" asp-route-id="@item.afpId">Edit</a> |
-                <a class="btn btn-danger" asp-action="DeleteAfp" asp-route-id="@item.afpId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </div>
+        </div>
+    </div>
+ </div>

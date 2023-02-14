@@ -214,15 +214,15 @@ namespace SmartEmployee.Web.Data
             var Position = _dataContext.Positions.FirstOrDefault();
             if (!_dataContext.Positions.Any())
             {
-                _dataContext.Positions.Add(new Position { positionDescription = "SEO" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Developer" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Grafic Desing" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Support Specialists" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Human Resources Specialists" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Financial Managers" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Lawyers" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Management Analysts" });
-                _dataContext.Positions.Add(new Position { positionDescription = "Receptionists" });
+                _dataContext.Positions.Add(new Position { positionName = "SEO" });
+                _dataContext.Positions.Add(new Position { positionName = "Developer" });
+                _dataContext.Positions.Add(new Position { positionName = "Grafic Desing" });
+                _dataContext.Positions.Add(new Position { positionName = "Support Specialists" });
+                _dataContext.Positions.Add(new Position { positionName = "Human Resources Specialists" });
+                _dataContext.Positions.Add(new Position { positionName = "Financial Managers" });
+                _dataContext.Positions.Add(new Position { positionName = "Lawyers" });
+                _dataContext.Positions.Add(new Position { positionName = "Management Analysts" });
+                _dataContext.Positions.Add(new Position { positionName = "Receptionists" });
                 await _dataContext.SaveChangesAsync();
             }
         }

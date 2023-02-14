@@ -5,4 +5,46 @@
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<div class="container-fluid">
+    
+    <div class="col-xl-7 col-md-6 mb-5">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <h6>Employee</h6>
+                <div class="row no-gutters align-items-center">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <hr />
+                        <div>
+                            <div>
+                <h6>
+                    @Html.DisplayNameFor(model => model.User.firstName)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.User.firstName)
+                </p>
+                <h6>
+                    @Html.DisplayNameFor(model => model.User.surname)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.User.surname)
+                </p>
+                <h6>
+                    @Html.DisplayNameFor(model => model.User.secondSurname)
+                </h6>
+                 <p class = "text-gray-800">
+                    @Html.DisplayFor(model => model.User.secondSurname)
+                <p/>
+                
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-sm btn-warning" asp-controller="Administration" asp-action="EditPosition" 
+                    asp-route-id="@Model.EmmployeeId">Edit</a>
+            <a class="btn btn-sm btn-secondary" asp-action="IndexEmployee">Back to List</a>
+        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

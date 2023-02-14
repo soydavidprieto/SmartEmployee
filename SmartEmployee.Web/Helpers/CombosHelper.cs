@@ -67,7 +67,7 @@ namespace SmartEmployee.Web.Helpers
         {
             var list = _context.Positions.Select(p => new SelectListItem
             {
-                Text = p.positionDescription,
+                Text = p.positionName,
                 Value = $"{p.positionId}"
             }).OrderBy(p => p.Text)
                   .ToList();
@@ -186,6 +186,22 @@ namespace SmartEmployee.Web.Helpers
             list.Insert(0, new SelectListItem
             {
                 Text = "Select an Education type",
+                Value = "0"
+            });
+            return list;
+        }
+
+        public IEnumerable<SelectListItem> GetComboDocumentType()
+        {
+            var list = _context.DocumentTypes.Select(d => new SelectListItem
+            {
+                Text = d.documentTypeDescription,
+                Value = $"{d.documentTypeId}"
+            }).OrderBy(d => d.Text)
+                  .ToList();
+            list.Insert(0, new SelectListItem
+            {
+                Text = "Select a Document type",
                 Value = "0"
             });
             return list;

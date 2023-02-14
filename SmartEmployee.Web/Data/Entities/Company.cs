@@ -5,6 +5,7 @@ namespace SmartEmployee.Web.Data.Entities
     public class Company
     {
         [Key]
+        [Display(Name ="Company")]
         public int companyId { get; set; }
 
         [Required]

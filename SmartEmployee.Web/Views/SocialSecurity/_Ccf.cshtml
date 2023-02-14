@@ -1,18 +1,12 @@
-﻿@model TModel
+﻿@model SmartEmployee.Web.Data.Entities.Ccf
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="form-group">
+    <label asp-for="ccfName" class="control-label"></label>
+    <input asp-for="ccfName" class="form-control" />
+    <span asp-validation-for="ccfName" class="text-danger"></span>
 </div>
-</body>
-</html>
+<div class="form-group">
+    <label asp-for="ccfNit" class="control-label"></label>
+    <input asp-for="ccfNit" class="form-control" />
+    <span asp-validation-for="ccfNit" class="text-danger"></span>
+</div>

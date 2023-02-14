@@ -1,18 +1,12 @@
-﻿@model TModel
+﻿@model SmartEmployee.Web.Data.Entities.Afp
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<div class="form-group">
+    <label asp-for="afpName" class="control-label"></label>
+    <input asp-for="afpName" class="form-control"/>
+    <span asp-validation-for="afpName" class="text-danger"></span>
 </div>
-</body>
-</html>
+<div class="form-group">
+    <label asp-for="afpNit" class="control-label"></label>
+    <input asp-for="afpNit" class="form-control" />
+    <span asp-validation-for="afpNit" class="text-danger"></span>
+</div>

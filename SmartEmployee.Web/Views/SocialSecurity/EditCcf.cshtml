@@ -5,33 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit Ccf</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditCcf">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ccfId" />
-            <div class="form-group">
-                <label asp-for="ccfName" class="control-label"></label>
-                <input asp-for="ccfName" class="form-control" />
-                <span asp-validation-for="ccfName" class="text-danger"></span>
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 text-gray-800">CCF</h1>
+    
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <h6>Edit CCF</h6>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            <hr />
+                            <form asp-action="EditCcf">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="ccfId" />
+                                
+                                <partial name="_Ccf"/>
+                                
+                                <div class="form-group">
+                                    <input type="submit" value="Save" class="btn btn-sm btn-primary" />
+                                    <a class="btn btn-sm btn-secondary" asp-action="IndexCcf">Back to List</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="ccfNit" class="control-label"></label>
-                <input asp-for="ccfNit" class="form-control" />
-                <span asp-validation-for="ccfNit" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a class="btn btn-secondary" asp-action="IndexCcf">Back to List</a>
 </div>
 
 @section Scripts {

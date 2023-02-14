@@ -8,5 +8,23 @@ namespace SmartEmployee.Web.Helpers
         IEnumerable<SelectListItem> GetComboPayrollTypes();
 
         IEnumerable<SelectListItem> GetComboCompanies();
+
+        IEnumerable<SelectListItem> GetComboGenders();
+
+        IEnumerable<SelectListItem> GetComboPositions();
+
+        IEnumerable<SelectListItem> GetComboOffice();
+
+        IEnumerable<SelectListItem> GetComboArl();
+
+        IEnumerable<SelectListItem> GetComboAfp();
+        IEnumerable<SelectListItem> GetComboEps();
+
+        IEnumerable<SelectListItem> GetComboCcf();
+
+        IEnumerable<SelectListItem> GetComboSchedule();
+
+        IEnumerable<SelectListItem> GetComboEducationType();
+        IEnumerable<SelectListItem> GetComboDocumentType();
     }
 }

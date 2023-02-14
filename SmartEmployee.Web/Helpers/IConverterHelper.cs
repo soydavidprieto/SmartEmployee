@@ -11,5 +11,8 @@ namespace SmartEmployee.Web.Helpers
 
         Task<Office> ToOfficeAsync(OfficeViewModel model, bool isNew);
         OfficeViewModel ToOfficeViewModel(Office office);
+
+        //Task<Employee> ToEmployeeAsync(EmployeeViewModel model, bool isNew);
+        //EmployeeViewModel ToEmployeeViewModel(Employee employee);
     }
 }

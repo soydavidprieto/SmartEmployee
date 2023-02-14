@@ -27,25 +27,6 @@ namespace SmartEmployee.Web.Controllers
             return View(await _context.Afps.ToListAsync());
         }
 
-
-        // GET: SocialSecurity/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var afp = await _context.Afps
-        //        .FirstOrDefaultAsync(m => m.afpId == id);
-        //    if (afp == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(afp);
-        //}
-
         #region // Create Afp
         public IActionResult CreateAfp()
         {
