@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SmartEmployee.Web.Models
 {
-    public class EmployeeViewModel
+    public class EmployeeViewModel 
     {
         [Required]
         [Display(Name = "Firt name")]
@@ -27,7 +27,7 @@ namespace SmartEmployee.Web.Models
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [EmailAddress]
-        public string Username { get; set; }
+        public string email { get; set; }
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
@@ -41,131 +41,131 @@ namespace SmartEmployee.Web.Models
         [StringLength(20, MinimumLength = 6, ErrorMessage = "The {0} field must contain between {2} and {1} characters.")]
         [Compare("Password")]
         public string PasswordConfirm { get; set; }
-        
-               
-        //public int emmployeeId { get; set; }
+
+
+        public int emmployeeId { get; set; }
 
 
 
-        //[Display(Name = "Document")]
-        //[MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string employeeDocument { get; set; }
-
-        
-        //[Display(Name = "Genger")]
-        //public int genderId { get; set; }
-
-        //public IEnumerable<SelectListItem> Genders { get; set; }
-
-       
-        //[Display(Name = "Document type")]
-        //public int documentTypeId { get; set; }
-
-        //public IEnumerable<SelectListItem> DocumentTypes { get; set; }
+        [Display(Name = "Document")]
+        [MaxLength(50, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string employeeDocument { get; set; }
 
 
-        //[Display(Name = "Date of birth")]
-        //[Required(ErrorMessage = "The field {0} is mandatory.")]
-        //[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        //public DateTime employeeBirth { get; set; }
+        [Display(Name = "Genger")]
+        public int genderId { get; set; }
 
-        //[Display(Name = "Fixed Phone")]
-        //[MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string employeeFixedPhone { get; set; }
+        public IEnumerable<SelectListItem> Genders { get; set; }
 
 
-        //[Display(Name = "Cell Phone")]
-        //[Required]
-        //[MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string employeeCellPhone { get; set; }
+        [Display(Name = "Document type")]
+        public int documentTypeId { get; set; }
 
-        //[Display(Name = "Address")]
-        //[Required]
-        //[MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string employeeAddress { get; set; }
+        public IEnumerable<SelectListItem> DocumentTypes { get; set; }
 
-        //public Employee Employee { get; set; }
 
-        //public IEnumerable<SelectListItem> Companies { get; set; }
+        [Display(Name = "Date of birth")]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime employeeBirth { get; set; }
 
-        //[Display(Name ="Company")]
-        //public int companyId { get; set; }
+        [Display(Name = "Fixed Phone")]
+        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string employeeFixedPhone { get; set; }
 
-        //[Required]
-        //[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
 
-        //[Display(Name ="In come")]
-        //public DateTime employeeIncome { get; set; }
+        [Display(Name = "Cell Phone")]
+        [Required]
+        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string employeeCellPhone { get; set; }
 
-        //public IEnumerable<SelectListItem> Positions { get; set; }
+        [Display(Name = "Address")]
+        [Required]
+        [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string employeeAddress { get; set; }
 
-        //[Display(Name ="Position")]
-        //public int positionId { get; set; }
+        public Employee Employee { get; set; }
 
-        
-        
-        //public IEnumerable<SelectListItem> Offices { get; set; }
+        public IEnumerable<SelectListItem> Companies { get; set; }
 
-        //[Display(Name = "Office")]
-        //public int officeId { get; set; }
+        [Display(Name = "Company")]
+        public int companyId { get; set; }
 
-        
-        //public IEnumerable<SelectListItem> Eps { get; set; }
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
 
-        //[Display(Name = "Eps")]
-        //public int epsId { get; set; }
+        [Display(Name = "In come")]
+        public DateTime employeeIncome { get; set; }
 
-        
-        //public IEnumerable<SelectListItem> Arl { get; set; }
+        public IEnumerable<SelectListItem> Positions { get; set; }
 
-        //[Display(Name = "Arl")]
-        //public int arlId { get; set; }
+        [Display(Name = "Position")]
+        public int positionId { get; set; }
 
-        
-        //public IEnumerable<SelectListItem> Afp { get; set; }
 
-        //[Display(Name = "Afp")]
-        //public int afpId { get; set; }
 
-        //public IEnumerable<SelectListItem> Ccf { get; set; }
+        public IEnumerable<SelectListItem> Offices { get; set; }
 
-        //[Display(Name = "Ccf")]
+        [Display(Name = "Office")]
+        public int officeId { get; set; }
 
-        //public int ccfId { get; set; }
 
-        
-        //public IEnumerable<SelectListItem> Schedule { get; set; }
+        public IEnumerable<SelectListItem> Eps { get; set; }
 
-        //[Display(Name = "Schedule")]
-        //public int scheduleId { get; set; }
+        [Display(Name = "Eps")]
+        public int epsId { get; set; }
 
-        //[Required]
-        //[Display(Name = "Salary")]
-        //public decimal employeeSalary { get; set; }
 
-        
-        
-        //public IEnumerable<SelectListItem> EducationType { get; set; }
+        public IEnumerable<SelectListItem> Arl { get; set; }
 
-        //[Display(Name = "Education Type")]
-        //public int educationTypeId { get; set; }
+        [Display(Name = "Arl")]
+        public int arlId { get; set; }
 
-        //[Required]
-        //[Display(Name = "Degree")]
-        //[MaxLength(200, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string degree { get; set; }
 
-        //[Required]
-        //[Display(Name = "Institution")]
-        //[MaxLength(150, ErrorMessage = "The {0} field can not have more than {1} characters.")]
-        //public string institution { get; set; }
+        public IEnumerable<SelectListItem> Afp { get; set; }
 
-        //[Display(Name = "Start Date")]
-        //[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        //public DateTime startDate { get; set; }
+        [Display(Name = "Afp")]
+        public int afpId { get; set; }
 
-        //[Display(Name = "End Date")]
-        //[DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        //public DateTime endDate { get; set; }
+        public IEnumerable<SelectListItem> Ccf { get; set; }
+
+        [Display(Name = "Ccf")]
+
+        public int ccfId { get; set; }
+
+
+        public IEnumerable<SelectListItem> Schedule { get; set; }
+
+        [Display(Name = "Schedule")]
+        public int scheduleId { get; set; }
+
+        [Required]
+        [Display(Name = "Salary")]
+        public decimal employeeSalary { get; set; }
+
+
+
+        public IEnumerable<SelectListItem> EducationType { get; set; }
+
+        [Display(Name = "Education Type")]
+        public int educationTypeId { get; set; }
+
+        [Required]
+        [Display(Name = "Degree")]
+        [MaxLength(200, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string degree { get; set; }
+
+        [Required]
+        [Display(Name = "Institution")]
+        [MaxLength(150, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        public string institution { get; set; }
+
+        [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime startDate { get; set; }
+
+        [Display(Name = "End Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime endDate { get; set; }
     }
 }

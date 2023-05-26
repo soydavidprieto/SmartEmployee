@@ -24,7 +24,7 @@ namespace SmartEmployee.Web.Controllers
             _context = dataContext;
             _coverterHelper = coverterHelper;
             _combosHelper = combosHelper;
-            this._userHelper = userHelper;
+            _userHelper = userHelper;
         }
 
         public IActionResult IndexEmployee()
@@ -40,21 +40,34 @@ namespace SmartEmployee.Web.Controllers
         #region  AddEmployee
         public IActionResult AddEmployee()
         {
-            //var model = new EmployeeViewModel
-            //{
-            //    //Genders = _combosHelper.GetComboGenders(),
-            //    //DocumentTypes = _combosHelper.GetComboDocumentType(),
-            //    //Companies = _combosHelper.GetComboCompanies(),
-            //    //Positions = _combosHelper.GetComboPositions(),
-            //    //Offices = _combosHelper.GetComboOffice(),
-            //    //Eps = _combosHelper.GetComboEps(),
-            //    //Arl = _combosHelper.GetComboArl(),
-            //    //Afp = _combosHelper.GetComboAfp(),
-            //    //Ccf = _combosHelper.GetComboCcf(),
-            //    //Schedule = _combosHelper.GetComboSchedule(),
-            //    //EducationType = _combosHelper.GetComboEducationType()
-            //};
-            return View();
+            var model = new EmployeeViewModel
+            {
+                Genders = _combosHelper.GetComboGenders(),
+                DocumentTypes = _combosHelper.GetComboDocumentType(),
+                Companies = _combosHelper.GetComboCompanies(),
+                Positions = _combosHelper.GetComboPositions(),
+                Offices = _combosHelper.GetComboOffice(),
+                Eps = _combosHelper.GetComboEps(),
+                Arl = _combosHelper.GetComboArl(),
+                Afp = _combosHelper.GetComboAfp(),
+                Ccf = _combosHelper.GetComboCcf(),
+                Schedule = _combosHelper.GetComboSchedule(),
+                EducationType = _combosHelper.GetComboEducationType()
+
+            };
+            model.Genders = _combosHelper.GetComboGenders();
+            model.DocumentTypes = _combosHelper.GetComboDocumentType();
+            model.Companies = _combosHelper.GetComboCompanies();
+            model.Positions = _combosHelper.GetComboPositions();
+            model.Offices = _combosHelper.GetComboOffice();
+            model.Eps = _combosHelper.GetComboEps();
+            model.Arl = _combosHelper.GetComboArl();
+            model.Afp = _combosHelper.GetComboAfp();
+            model.Ccf = _combosHelper.GetComboCcf();
+            model.Schedule = _combosHelper.GetComboSchedule();
+            model.EducationType = _combosHelper.GetComboEducationType();
+            ModelState.AddModelError(string.Empty, "One o more files are incorrect");
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -64,92 +77,78 @@ namespace SmartEmployee.Web.Controllers
             {
                 var user = new User
                 {
-                    
+
                     firstName = model.firstName,
                     surname = model.surname,
                     secondSurname = model.secondSurname,
-                    UserName =  model.Username
+                    Email = model.email
                 };
                 var response = await _userHelper.AddUserAsync(user, model.Password);
                 if (response.Succeeded)
                 {
-                    var userInDb = await _userHelper.GetUserByEmailAsync(model.Username);
+                    var userInDb = await _userHelper.GetUserByEmailAsync(model.email);
                     await _userHelper.AddUserToRoleAsync(userInDb, "Employee");
                     await _context.SaveChangesAsync();
 
-                    //var employee = new Employee
-                    //{
-                    //    User = userInDb,
-                    //    Gender = await _context.Genders.FindAsync(model.genderId),
-                    //    DocumentType = await _context.DocumentTypes.FindAsync(model.documentTypeId),
-                    //    employeeDocument = model.employeeDocument,
-                    //    employeeBirth = model.employeeBirth,
-                    //    employeeFixedPhone = model.employeeFixedPhone,
-                    //    employeeCellPhone = model.employeeCellPhone,
-                    //    employeeAddress = model.employeeAddress
-                    //};
-                    //_context.Employees.Add(employee);
-                    //await _context.SaveChangesAsync();
+                    var employee = new Employee
+                    {
+                        User = userInDb,
+                        Gender = await _context.Genders.FindAsync(model.genderId),
+                        DocumentType = await _context.DocumentTypes.FindAsync(model.documentTypeId),
+                        employeeDocument = model.employeeDocument,
+                        employeeBirth = model.employeeBirth,
+                        employeeFixedPhone = model.employeeFixedPhone,
+                        employeeCellPhone = model.employeeCellPhone,
+                        employeeAddress = model.employeeAddress
+                    };
+                    _context.Employees.Add(employee);
+                    await _context.SaveChangesAsync();
 
+                    var laboralInfo = new LaboralInfo
+                    {
+                        Employee = employee,
+                        Company = await _context.Companies.FindAsync(model.companyId),
+                        employeeIncome = model.employeeIncome,
+                        Position = await _context.Positions.FindAsync(model.positionId),
+                        Office = await _context.Offices.FindAsync(model.officeId),
+                        Eps = await _context.Eps.FindAsync(model.epsId),
+                        Arl = await _context.Arls.FindAsync(model.arlId),
+                        Afp = await _context.Afps.FindAsync(model.afpId),
+                        Ccf = await _context.Ccfs.FindAsync(model.ccfId),
+                        Schedule = await _context.Schedules.FindAsync(model.scheduleId),
+                        employeeSalary = model.employeeSalary
+                    };
+                    _context.LaboralInfos.Add(laboralInfo);
+                    await _context.SaveChangesAsync();
 
-                    //var laboralInfo = new LaboralInfo
-                    //{
-                    //   Employee = employee,
-                    //   Company = await _context.Companies.FindAsync(model.companyId),
-                    //   employeeIncome = model.employeeIncome,
-                    //   Position = await _context.Positions.FindAsync(model.positionId),
-                    //   Office = await _context.Offices.FindAsync(model.officeId),
-                    //   Eps = await _context.Eps.FindAsync(model.epsId),
-                    //   Arl = await _context.Arls.FindAsync(model.arlId),
-                    //   Afp = await _context.Afps.FindAsync(model.afpId),
-                    //   Ccf = await _context.Ccfs.FindAsync(model.ccfId),
-                    //   Schedule = await _context.Schedules.FindAsync(model.scheduleId),
-                    //   employeeSalary = model.employeeSalary
-                    //};
-                    //_context.LaboralInfos.Add(laboralInfo);
-                    //await _context.SaveChangesAsync();
-
-                    //var educationInfo = new EducationInfo
-                    //{
-                    //    Employee = employee,
-                    //    EducationType = await _context.EducationTypes.FindAsync(model.educationTypeId),
-                    //    degree = model.degree,
-                    //    institution = model.institution,
-                    //    startDate = model.startDate,
-                    //    endDate = model.endDate
-                    //};
-                    //_context.EducationInfos.Add(educationInfo);
-                    //await _context.SaveChangesAsync();
+                    var educationInfo = new EducationInfo
+                    {
+                        Employee = employee,
+                        EducationType = await _context.EducationTypes.FindAsync(model.educationTypeId),
+                        degree = model.degree,
+                        institution = model.institution,
+                        startDate = model.startDate,
+                        endDate = model.endDate
+                    };
+                    _context.EducationInfos.Add(educationInfo);
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("IndexEmployee");
 
                 }
-                //model.Genders = _combosHelper.GetComboGenders();
-                //model.DocumentTypes = _combosHelper.GetComboDocumentType();
-                //model.Companies = _combosHelper.GetComboCompanies();
-                //model.Positions = _combosHelper.GetComboPositions();
-                //model.Offices = _combosHelper.GetComboOffice();
-                //model.Eps = _combosHelper.GetComboEps();
-                //model.Arl = _combosHelper.GetComboArl();
-                //model.Afp = _combosHelper.GetComboAfp();
-                //model.Ccf = _combosHelper.GetComboCcf();
-                //model.Schedule = _combosHelper.GetComboSchedule();
-                //model.EducationType = _combosHelper.GetComboEducationType();
-                ModelState.AddModelError(string.Empty, "One o more files are incorrect");
-                return View(model);
 
             }
-            //model.Genders = _combosHelper.GetComboGenders();
-            //model.DocumentTypes = _combosHelper.GetComboDocumentType();
-            //model.Companies = _combosHelper.GetComboCompanies();
-            //model.Positions = _combosHelper.GetComboPositions();
-            //model.Offices = _combosHelper.GetComboOffice();
-            //model.Eps = _combosHelper.GetComboEps();
-            //model.Arl = _combosHelper.GetComboArl();
-            //model.Afp = _combosHelper.GetComboAfp();
-            //model.Ccf = _combosHelper.GetComboCcf();
-            //model.Schedule = _combosHelper.GetComboSchedule();
-            //model.EducationType = _combosHelper.GetComboEducationType();
-                return View(model);
+            model.Genders = _combosHelper.GetComboGenders();
+            model.DocumentTypes = _combosHelper.GetComboDocumentType();
+            model.Companies = _combosHelper.GetComboCompanies();
+            model.Positions = _combosHelper.GetComboPositions();
+            model.Offices = _combosHelper.GetComboOffice();
+            model.Eps = _combosHelper.GetComboEps();
+            model.Arl = _combosHelper.GetComboArl();
+            model.Afp = _combosHelper.GetComboAfp();
+            model.Ccf = _combosHelper.GetComboCcf();
+            model.Schedule = _combosHelper.GetComboSchedule();
+            model.EducationType = _combosHelper.GetComboEducationType();
+            return View(model);
         }
         #endregion
 

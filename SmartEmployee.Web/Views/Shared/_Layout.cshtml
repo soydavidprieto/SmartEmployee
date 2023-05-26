@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a asp-controller="Home" asp-action="Index" class="sidebar-brand d-flex align-items-center justify-content-center">
+            <a asp-controller="Home" asp-action="Index" id="lnkHome" class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
                      <i><img src="~/img/Icon.png" width="30rem"/></i>
                 </div>
@@ -51,7 +51,7 @@
 
               <!-- Nav Item -->
             <li class="nav-item">
-                <a asp-controller="Employee" asp-action="IndexEmployee" class="nav-link">
+                <a asp-controller="Employee" asp-action="IndexEmployee" id="lnkEmployee" class="nav-link">
                     <i class="fas fa-user-tie"></i>
                     <span>Employee</span></a>
             </li>
@@ -60,7 +60,7 @@
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a id="lnkSocialSecurity" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-shield-alt"></i>
                     <span>Social security</span>
@@ -68,10 +68,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Options:</h6>
-                        <a class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexAfp">AFP</a>
-                        <a class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexArl">ARL</a>
-                        <a class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexEps">EPS</a> 
-                        <a class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexCcf">CCF</a>
+                        <a id="lnkAfp" class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexAfp">AFP</a>
+                        <a id="lnkArl" class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexArl">ARL</a>
+                        <a id="lnkEps" class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexEps">EPS</a> 
+                        <a id="lnkCcf" class="collapse-item" asp-area="" asp-controller="SocialSecurity" asp-action="IndexCcf">CCF</a>
 
                     </div>
                 </div>
@@ -79,7 +79,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                <a id="lnkAdministration" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Administration</span>
