@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  smartemployee.web:
+    image: ${DOCKER_REGISTRY-}smartemployeeweb
+    build:
+      context: .
+      dockerfile: SmartEmployee.Web\Dockerfile
